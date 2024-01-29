@@ -1,0 +1,19 @@
+Port 22
+Protocol 2
+PermitRootLogin no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+X11Forwarding no
+PrintMotd no
+PubkeyAuthentication no
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/ssh/sftp-server
+
+Match Group sftp
+ChrootDirectory /sftp/data/ # ajouter %u  si un chroot par  nom utilisateur 
+ForceCommand internal-sftp
+AllowTcpForwarding no
+PasswordAuthentication yes
+X11Forwarding no
+PubkeyAuthentication yes
+AuthorizedKeysFile /sftp/keys/

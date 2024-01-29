@@ -1,0 +1,11 @@
+route:
+    receiver: 'teams'
+
+receivers:
+    - name: 'teams'
+      teams_configs:
+          - send_resolved: true
+            text: "{{ .CommonAnnotations.description }}"
+            username: 'Prometheus'
+            channel: '#<channel-name>'
+            api_url: 'https://hooks.slack.com/services/<webhook-id>'

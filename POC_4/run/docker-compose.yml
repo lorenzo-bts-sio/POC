@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  sftp-server1:
+    container_name: client1
+    hostname: client1   
+    image: sftp
+    restart: always
+    environment:
+      - USER=lorenzo
+    volumes:
+      # - ./sftp/client1/config/sshd_config:/etc/ssh/sshd_config
+      - ./sftp/client1/keys/:/sftp/keys
+      - ./sftp/client1/data/:/sftp/data:rw
+    networks:
+      - sftps_network
+    ports:
+      - "2201:22"
+      - "9999:8000"
+    mem_limit: 512m
+    cpus: "0.5"
+
+
+  sftp-server2:
+    container_name: client2
+    hostname: client2   
+    image: sftp
+    restart: always
+    environment:
+      - USER=lorenzo toto titi
+    volumes:
+      # - ./sftp/client2/config/sshd_config:/etc/ssh/sshd_config
+      - ./sftp/client2/keys/:/sftp/keys
+      - ./sftp/client2/data/:/sftp/data:rw
+    networks:
+      - sftps_network
+    ports:
+      - "2202:22"
+    mem_limit: 512m
+    cpus: "0.5"
+  
+
+networks:
+  sftps_network:
+    name: sftp
+    driver: bridge
+
+volumes:
+  sftp-data:

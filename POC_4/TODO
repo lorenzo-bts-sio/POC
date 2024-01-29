@@ -1,0 +1,4 @@
+- Correction de l'import des clef ssh erreur  : authorized keys '/sftp/keys/' is not a regular file
+- Optimisation de l'exporter : User None etc 
+- Création du Dashbord grafana :  le Dashboard pour afficher par instance  et date les action faites  par les users ( création , suppresion etc )
+- Création d'un script d'installtion de la solution  et de création de conteneur 
